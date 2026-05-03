@@ -1,0 +1,317 @@
+/* =========================================
+   ГЛАВА 1.4: Селекторы и Блочная модель 
+   (Убираем отступы по умолчанию и задаем box-sizing)
+========================================= */
+* {
+    box-sizing: border-box; /* Размеры блоков включают padding и border */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Чтобы подвал всегда был внизу */
+}
+
+main {
+    flex-grow: 1; /* Основной контент занимает свободное место */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   ГЛАВА 1.5: Flexbox (Шапка сайта)
+========================================= */
+.header {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between; /* Разносим логотип и меню по краям */
+    align-items: center; /* Центрируем по вертикали */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e94560;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Расстояние между ссылками */
+}
+
+.nav-list a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-list a:hover, .nav-list a.active {
+    color: #e94560; /* Каскадность: этот цвет перебьет белый */
+}
+
+/* --- Стили Главной страницы --- */
+.hero {
+    background-image: url('restaraunt.jpg'); 
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-size: cover;
+    color: white;
+    padding: 150px 0; 
+    text-align: center;
+    position: relative; 
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    padding: 10px 25px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #d63d56;
+}
+
+.features {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.features-flex {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    flex: 1;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a1a2e;
+}
+
+.review {
+    padding: 60px 30px;
+    background-color: #fff; 
+    border-radius: 10px;
+    margin: 40px auto 60px auto; /* Отступы сверху и снизу */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Легкая тень для объема */
+}
+
+.review-flex {
+    display: flex;
+    align-items: center; /* Центрируем по вертикали */
+    gap: 40px; /* Расстояние между фото и текстом */
+}
+
+.review-image {
+    flex: 0 0 200px; /* Фиксируем ширину колонки с фото, чтобы она не сжималась */
+    text-align: center;
+}
+
+.critic-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Делает картинку идеально круглой */
+    object-fit: cover; /* Чтобы картинка не сплющивалась, если она не квадратная */
+    border: 4px solid #e94560; /* Рамка в цвет кнопок */
+    margin-bottom: 15px;
+}
+
+.critic-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #1a1a2e;
+}
+
+.critic-title {
+    color: #777;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Оформление самой цитаты */
+.review-content blockquote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #444;
+    padding-left: 25px;
+    border-left: 5px solid #e94560; /* Вертикальная красная линия слева */
+    line-height: 1.8;
+}
+/* --- Стили страницы Меню --- */
+.page-title {
+    text-align: center;
+    margin: 40px 0;
+    color: #1a1a2e;
+}
+
+/* =========================================
+   ГЛАВА 1.5: Grid (Сетка меню)
+========================================= */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Умная сетка, которая сама переносит элементы */
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.menu-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.item-image1 {
+    height: 180px;
+    background-image: url('ratatouille.jpg');
+    background-position: center center; 
+    background-size: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.item-image2 {
+    height: 180px;
+    background-image: url('soup.jpg');
+    background-position: center center; 
+    background-size: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.item-image3 {
+    height: 180px;
+    background-image: url('bearnaise.jpg');
+    background-position: center center; 
+    background-size: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.item-image4 {
+    height: 180px;
+    background-image: url('dessert.jpg');
+    background-position: center center; 
+    background-size: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.price {
+    display: block;
+    font-weight: bold;
+    color: #e94560;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+/* --- Стили страницы Контактов --- */
+.contacts-flex {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.review-flex {
+        flex-direction: column;
+        text-align: center;
+}
+    
+.review-content blockquote {
+        border-left: none; /* Убираем линию слева на телефоне */
+        border-top: 5px solid #e94560; /* Делаем линию сверху */
+        padding-left: 0;
+        padding-top: 20px;
+}
+
+
+.contact-info, .contact-form {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+/* Подвал */
+.footer {
+    background: #1a1a2e;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/* =========================================
+   ГЛАВА 1.6: Адаптивный дизайн (Медиазапросы)
+========================================= */
+@media (max-width: 768px) {
+    /* На телефонах шапка выстраивается в колонку */
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Блоки преимуществ на главной встают друг под друга */
+    .features-flex {
+        flex-direction: column;
+    }
+
+    /* Блоки контактов тоже встают друг под друга */
+    .contacts-flex {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
